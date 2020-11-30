@@ -30,7 +30,7 @@ class FeedRecyclerAdapter(private val dataSet: Array<String>): RecyclerView.Adap
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         val rm : RequestManager = Glide.with(parentContext)
 
-        val rb : RequestBuilder<Drawable> = when (position) {
+        val rb : RequestBuilder<Drawable> = when (position % 12) {
             0 -> rm.load(R.drawable.k1)
             1 -> rm.load(R.drawable.k2)
             2 -> rm.load(R.drawable.k3)
@@ -50,7 +50,6 @@ class FeedRecyclerAdapter(private val dataSet: Array<String>): RecyclerView.Adap
     }
 
     override fun getItemCount(): Int {
-        return 12
-        //return dataSet.count()
+        return dataSet.count()
     }
 }
