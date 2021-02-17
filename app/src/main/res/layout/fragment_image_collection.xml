@@ -10,5 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     app:spanCount="3"
-    tools:context=".ImageCollectFragment"
-    tools:listitem="@layout/fragment_image_item" />
+    tools:context=".ImageCollectFragment" />
