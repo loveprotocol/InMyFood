@@ -5,17 +5,16 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
-import com.bumptech.glide.request.RequestOptions
 
-class FeedRecyclerAdapter(private val dataSet: Array<String>): RecyclerView.Adapter<FeedRecyclerAdapter.FeedViewHolder>() {
+class ImageCollectRecyclerViewAdapter(
+    private val dataSet: Array<String>
+): RecyclerView.Adapter<ImageCollectRecyclerViewAdapter.FeedViewHolder>() {
+
     lateinit var parentContext: Context
 
     class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +23,8 @@ class FeedRecyclerAdapter(private val dataSet: Array<String>): RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         parentContext = parent.context
-        return FeedViewHolder(LayoutInflater.from(parentContext).inflate(R.layout.item_main_feed, parent, false))
+        return FeedViewHolder(LayoutInflater.from(parentContext)
+            .inflate(R.layout.item_main_feed, parent, false))
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {

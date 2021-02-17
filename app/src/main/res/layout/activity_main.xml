@@ -19,15 +19,13 @@
         android:textStyle="bold"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <fragment android:name="com.yes.inmyfood.ImageCollectFragment"
         android:id="@+id/main_post_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.6"
         app:layout_constraintTop_toBottomOf="@id/main_logo_tv"
         android:layout_marginTop="24dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
         />
 
     <ImageButton

@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -22,7 +21,7 @@ class AddPostActivity : AppCompatActivity() {
     private var isBlockedScrollView = true
     private var outOfScroll: Boolean = false
     private var isPermission: Boolean = false
-    private lateinit var galleryRecyclerAdapter:FeedRecyclerAdapter
+    private lateinit var galleryRecyclerViewAdapter:ImageCollectRecyclerViewAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +45,8 @@ class AddPostActivity : AppCompatActivity() {
         }
 
 
-        galleryRecyclerAdapter = FeedRecyclerAdapter(Array(36) {"1"})
-        gallery_image_list.adapter = galleryRecyclerAdapter
+        galleryRecyclerViewAdapter = ImageCollectRecyclerViewAdapter(Array(36) {"1"})
+        gallery_image_list.adapter = galleryRecyclerViewAdapter
 
 
         val spacing = (resources.getDimension(R.dimen.recyclerview_grid_spacing) / resources.displayMetrics.density).toInt()
