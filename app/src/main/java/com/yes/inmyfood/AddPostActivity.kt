@@ -14,10 +14,11 @@ import com.google.android.material.appbar.AppBarLayout
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.squareup.otto.Subscribe
-import kotlinx.android.synthetic.main.activity_add_post.*
+import com.yes.inmyfood.databinding.ActivityAddPostBinding
 
 class AddPostActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityAddPostBinding
     private var isBlockedScrollView = true
     private var outOfScroll: Boolean = false
     private var isPermission: Boolean = false
@@ -26,11 +27,14 @@ class AddPostActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_post)
+
+        binding = ActivityAddPostBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         tedPermission()
 
-        scrollView.setOnTouchListener(object : View.OnTouchListener {
+        binding.scrollView.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 return isBlockedScrollView
             }
@@ -38,7 +42,7 @@ class AddPostActivity : AppCompatActivity() {
 
         GlobalBus.getBus().register(this)
 
-        setSupportActionBar(add_post_toolbar)
+        setSupportActionBar(binding.addPostToolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.ic_x)
@@ -46,15 +50,15 @@ class AddPostActivity : AppCompatActivity() {
 
 
         galleryRecyclerViewAdapter = ImageCollectRecyclerViewAdapter(Array(36) {"1"})
-        gallery_image_list.adapter = galleryRecyclerViewAdapter
+        binding.galleryImageList.adapter = galleryRecyclerViewAdapter
 
 
         val spacing = (resources.getDimension(R.dimen.recyclerview_grid_spacing) / resources.displayMetrics.density).toInt()
-        gallery_image_list.setPadding(spacing, spacing, spacing, spacing)
+        binding.galleryImageList.setPadding(spacing, spacing, spacing, spacing)
 
-        gallery_image_list.clipToPadding = false
-        gallery_image_list.clipChildren = false
-        gallery_image_list.addItemDecoration(object: RecyclerView.ItemDecoration() {
+        binding.galleryImageList.clipToPadding = false
+        binding.galleryImageList.clipChildren = false
+        binding.galleryImageList.addItemDecoration(object: RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
                 outRect: Rect,
                 view: View,
@@ -64,7 +68,7 @@ class AddPostActivity : AppCompatActivity() {
                 outRect.set(spacing, spacing, spacing, spacing)
             }
         })
-        gallery_image_list.setOnTouchListener { view, motionEvent ->
+        binding.galleryImageList.setOnTouchListener { view, motionEvent ->
             val outRect = Rect()
             view.getHitRect(outRect)
             if (outRect.top > motionEvent.rawY) {
@@ -122,10 +126,10 @@ class AddPostActivity : AppCompatActivity() {
 
     @Subscribe
     fun outOfScroll(event:Events.Companion.EventOutOfRect) {
-        val params = imageToolbar.layoutParams as AppBarLayout.LayoutParams
+        val params = binding.imageToolbar.layoutParams as AppBarLayout.LayoutParams
         params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP
-        imageToolbar.layoutParams = params
-        gallery_image_list.setOnTouchListener(null)
+        binding.imageToolbar.layoutParams = params
+        binding.galleryImageList.setOnTouchListener(null)
         outOfScroll = true
     }
 

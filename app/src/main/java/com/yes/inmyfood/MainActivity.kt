@@ -1,27 +1,28 @@
 package com.yes.inmyfood
 
 import android.content.Intent
-import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
+import com.yes.inmyfood.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        main_add_btn.setOnClickListener(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-
+        binding.mainAddBtn.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         view?.let {
             when (view) {
-                main_add_btn -> {
+                binding.mainAddBtn -> {
                     val intent = Intent(this, AddPostActivity::class.java)
                     startActivity(intent)
                 }
