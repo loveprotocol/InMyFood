@@ -1,61 +1,88 @@
 package com.yes.inmyfood
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yes.inmyfood.dummy.DummyContent
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.yes.inmyfood.databinding.FragmentPostingListBinding
 
 /**
  * A fragment representing a list of Items.
  */
 class PostingListFragment : Fragment() {
 
-    private var columnCount = 1
+    companion object {
+        fun newInstance() = PostingListFragment()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private val viewModel by lazy { ViewModelProvider(this).get(PostingListViewModel::class.java) }
+    private lateinit var viewDataBinding: FragmentPostingListBinding
+    private lateinit var activity: Activity
 
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity = context as Activity
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_posting_list, container, false)
-
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> CenterZoomLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = PostingRecyclerViewAdapter(DummyContent.ITEMS)
-            }
-        }
-        return view
+        viewDataBinding = FragmentPostingListBinding.inflate(layoutInflater, container, false)
+        return viewDataBinding.root
     }
 
-    companion object {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            PostingListFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
+        viewDataBinding.viewmodel = viewModel
+        viewDataBinding.fragPostingListRv.layoutManager = CenterZoomLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        viewDataBinding.fragPostingListRv.adapter = PostingListViewAdapter()
+        viewDataBinding.fragPostingListRv.addItemDecoration(FirstEndItemDecoration(activity))
+
+        val dummyList: ArrayList<Posting> = arrayListOf()
+        activity
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k1)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k2)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k3)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k4)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k5)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k6)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k7)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k8)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k9)!!, arrayListOf("tag1", "tag2", "tag3")))
+        dummyList.add(Posting(JodaTimeHelper.getCurrentTimeStamp(),
+            JodaTimeHelper.convertTimeStamp("2021/01/22 12:00:00"),
+            ContextCompat.getDrawable(activity, R.drawable.k10)!!, arrayListOf("tag1", "tag2", "tag3")))
+
+        viewModel.start(dummyList)
     }
 }

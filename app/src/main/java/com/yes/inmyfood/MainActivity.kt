@@ -16,13 +16,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
-        binding.mainAddBtn.setOnClickListener(this)
+        binding.actMainBtnAdd.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         view?.let {
             when (view) {
-                binding.mainAddBtn -> {
+                binding.actMainBtnAdd -> {
                     val intent = Intent(this, AddPostActivity::class.java)
                     startActivity(intent)
                 }
