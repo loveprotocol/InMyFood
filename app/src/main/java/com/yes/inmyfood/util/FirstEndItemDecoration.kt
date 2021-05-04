@@ -1,4 +1,4 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.util
 
 import android.content.Context
 import android.graphics.Point
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.recyclerview.widget.RecyclerView
 
-class FirstEndItemDecoration(val context: Context) : RecyclerView.ItemDecoration() {
+class FirstEndItemDecoration(private val context: Context) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -20,12 +20,12 @@ class FirstEndItemDecoration(val context: Context) : RecyclerView.ItemDecoration
         val position = parent.getChildAdapterPosition(view)
         val itemCount = state.itemCount
 
-        val offset: Int = (getScreenWidth() / 2) - (view.layoutParams.width / 2)
+        val offset: Int = ((getScreenWidth() / 2) - (view.layoutParams.width / 2))
 
         if (position == 0) {
             (view.layoutParams as ViewGroup.MarginLayoutParams).leftMargin = 0
             outRect.left = offset
-        } else if (position == itemCount -1) {
+        } else if (position == itemCount - 1) {
             (view.layoutParams as ViewGroup.MarginLayoutParams).rightMargin = 0
             outRect.right = offset
         }

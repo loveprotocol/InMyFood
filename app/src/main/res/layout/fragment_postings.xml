@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.yes.inmyfood.postings.PostingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/frag_postings_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:text="@{viewmodel.postingDate}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/frag_postings_rv"
+            android:name="com.yes.inmyfood.PostingListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:items="@{viewmodel.postings}"
+            app:layout_constraintHeight_percent="0.85"
+            app:layout_constraintTop_toBottomOf="@id/frag_postings_tv_date"
+            tools:context=".postings.PostingsFragment"
+            tools:layout_editor_absoluteX="142dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

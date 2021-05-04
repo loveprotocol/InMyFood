@@ -1,8 +1,10 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.postings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yes.inmyfood.data.Posting
+import com.yes.inmyfood.util.JodaTimeHelper
 
 /**
  * TODO
@@ -10,11 +12,15 @@ import androidx.lifecycle.ViewModel
  * 게시글 리스트 아이템 추가 load
  *
  */
-class PostingListViewModel : ViewModel() {
+class PostingsViewModel : ViewModel() {
 
     private val _postings = MutableLiveData<List<Posting>>()
     val postings: LiveData<List<Posting>>
         get() = _postings
+
+    private val _postingDate = MutableLiveData<String>()
+    val postingDate: LiveData<String>
+        get() = _postingDate
 
     private var init = false
     private val _dummyList:ArrayList<Posting> = arrayListOf()
@@ -33,5 +39,20 @@ class PostingListViewModel : ViewModel() {
     fun loadPostings() {
 
         _postings.value = _dummyList.subList(0, 9)
+    }
+
+    fun test(position: Int) {
+        _postings.value?.let {
+            val date = it[position].eatDateTime
+            val dateString = JodaTimeHelper.convertMillsToTimeString(date, "yyyy-MM-dd")
+
+            if (_postingDate.value == null) {
+                _postingDate.value = dateString
+            } else {
+                if (_postingDate.value != dateString) {
+                    _postingDate.value = dateString
+                }
+            }
+        }
     }
 }

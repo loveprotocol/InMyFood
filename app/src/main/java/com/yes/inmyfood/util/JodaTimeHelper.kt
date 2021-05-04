@@ -1,6 +1,5 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.util
 
-import android.R.string
 import org.joda.time.*
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
@@ -78,7 +77,9 @@ class JodaTimeHelper {
 
         @JvmStatic fun getAge(birth:String) : Int {
             val birthDate = LocalDate(birth.substring(0, 4).toInt(), birth.substring(4, 6).toInt(), birth.substring(6).toInt())
-            return Years.yearsBetween(birthDate, now).years
+            return Years.yearsBetween(birthDate,
+                now
+            ).years
         }
 
         /**

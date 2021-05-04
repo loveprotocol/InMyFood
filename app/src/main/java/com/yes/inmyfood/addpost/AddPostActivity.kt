@@ -1,4 +1,4 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.addpost
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -14,7 +14,11 @@ import com.google.android.material.appbar.AppBarLayout
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.squareup.otto.Subscribe
+import com.yes.inmyfood.ImageCollectRecyclerViewAdapter
+import com.yes.inmyfood.R
 import com.yes.inmyfood.databinding.ActivityAddPostBinding
+import com.yes.inmyfood.util.Events
+import com.yes.inmyfood.util.GlobalBus
 
 class AddPostActivity : AppCompatActivity() {
 
@@ -22,7 +26,7 @@ class AddPostActivity : AppCompatActivity() {
     private var isBlockedScrollView = true
     private var outOfScroll: Boolean = false
     private var isPermission: Boolean = false
-    private lateinit var galleryRecyclerViewAdapter:ImageCollectRecyclerViewAdapter
+    private lateinit var galleryRecyclerViewAdapter: ImageCollectRecyclerViewAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -125,7 +129,7 @@ class AddPostActivity : AppCompatActivity() {
     }
 
     @Subscribe
-    fun outOfScroll(event:Events.Companion.EventOutOfRect) {
+    fun outOfScroll(event: Events.Companion.EventOutOfRect) {
         val params = binding.imageToolbar.layoutParams as AppBarLayout.LayoutParams
         params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP
         binding.imageToolbar.layoutParams = params

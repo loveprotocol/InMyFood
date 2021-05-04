@@ -1,4 +1,4 @@
-package com.yes.inmyfood;
+package com.yes.inmyfood.util;
 
 import android.content.Context;
 import android.view.View;
@@ -70,5 +70,14 @@ public class CenterZoomLayoutManager extends LinearLayoutManager {
             return 0;
         }
 
+    }
+
+    /**
+     * childView의 너비 조절을 위해 오버라이딩
+     */
+    @Override
+    public boolean checkLayoutParams(RecyclerView.LayoutParams lp) {
+        lp.width = (int) (getWidth() * 0.7);
+        return true;
     }
 }

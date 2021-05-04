@@ -1,4 +1,4 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.data
 
 import android.graphics.drawable.Drawable
 

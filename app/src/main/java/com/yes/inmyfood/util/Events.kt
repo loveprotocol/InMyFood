@@ -1,4 +1,4 @@
-package com.yes.inmyfood
+package com.yes.inmyfood.util
 
 class Events {
 
