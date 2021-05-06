@@ -37,21 +37,16 @@ class PostingsViewModel : ViewModel() {
     }
 
     fun loadPostings() {
-
         _postings.value = _dummyList.subList(0, 9)
     }
 
-    fun test(position: Int) {
+    fun updateDate(position: Int) {
         _postings.value?.let {
             val date = it[position].eatDateTime
             val dateString = JodaTimeHelper.convertMillsToTimeString(date, "yyyy-MM-dd")
 
-            if (_postingDate.value == null) {
+            if (_postingDate.value != dateString) {
                 _postingDate.value = dateString
-            } else {
-                if (_postingDate.value != dateString) {
-                    _postingDate.value = dateString
-                }
             }
         }
     }

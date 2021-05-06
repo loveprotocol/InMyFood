@@ -4,19 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.viewpager2.widget.ViewPager2
 import com.yes.inmyfood.*
 import com.yes.inmyfood.data.Posting
 import com.yes.inmyfood.databinding.FragmentPostingsBinding
-import com.yes.inmyfood.util.CenterZoomLayoutManager
-import com.yes.inmyfood.util.FirstEndItemDecoration
+import com.yes.inmyfood.util.ZoomOutSidePageTransformer
 import com.yes.inmyfood.util.JodaTimeHelper
 
 /**
@@ -55,35 +52,21 @@ class PostingsFragment : Fragment() {
 
         viewDataBinding.lifecycleOwner = this
         viewDataBinding.viewmodel = viewModel
-        viewDataBinding.fragPostingsRv.layoutManager =
-            CenterZoomLayoutManager(
-                context,
-                RecyclerView.HORIZONTAL,
-                false
-            )
-        viewDataBinding.fragPostingsRv.adapter = PostingsRvAdapter()
-        viewDataBinding.fragPostingsRv.addOnScrollListener(object :
-            RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
 
-                if (newState == RecyclerView.SCROLL_STATE_SETTLING) {
-                    val position = (viewDataBinding.fragPostingsRv.layoutManager as CenterZoomLayoutManager).findLastVisibleItemPosition()
-                    if (position != RecyclerView.NO_POSITION) {
-                        viewModel.test(position)
-                    }
+        with(viewDataBinding.fragPostingsVp2) {
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            layoutDirection = ViewPager2.LAYOUT_DIRECTION_RTL
+            offscreenPageLimit = 2
+
+            adapter = PostingsRvAdapter()
+            setPageTransformer(ZoomOutSidePageTransformer())
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    viewModel.updateDate(position)
+                    super.onPageSelected(position)
                 }
-            }
-        })
-
-        viewDataBinding.fragPostingsRv.addItemDecoration(
-            FirstEndItemDecoration(
-                activity
-            )
-        )
-
-        val helper = LinearSnapHelper()
-        helper.attachToRecyclerView(viewDataBinding.fragPostingsRv)
+            })
+        }
 
         val dummyList: ArrayList<Posting> = arrayListOf()
         activity

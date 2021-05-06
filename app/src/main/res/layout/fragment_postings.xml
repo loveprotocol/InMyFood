@@ -26,15 +26,12 @@
             android:textSize="20sp"
             android:text="@{viewmodel.postingDate}" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/frag_postings_rv"
-            android:name="com.yes.inmyfood.PostingListFragment"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/frag_postings_vp2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:items="@{viewmodel.postings}"
             app:layout_constraintHeight_percent="0.85"
-            app:layout_constraintTop_toBottomOf="@id/frag_postings_tv_date"
-            tools:context=".postings.PostingsFragment"
-            tools:layout_editor_absoluteX="142dp" />
+            app:layout_constraintTop_toBottomOf="@id/frag_postings_tv_date" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
