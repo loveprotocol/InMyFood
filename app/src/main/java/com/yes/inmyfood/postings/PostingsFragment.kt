@@ -77,7 +77,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k7
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("외식", "초밥정식", "깨비시장맛집", "점심", "가성비맛집", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네") //, "브런치메뉴", "소세지", "계란후라이", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -87,7 +87,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k4
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("11", "sss", "냉파요리", "소세지야채볶음밥", "밥요리", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -97,7 +97,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k3
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("던킨도너츠", "외식", "간단한솔로외식", "브런치메뉴", "점심", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -107,7 +107,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k4
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("집밥", "점심", "냉파요리", "소세지야채볶음밥", "밥요리", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -117,7 +117,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k3
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("던킨도너츠", "외식", "간단한솔로외식", "브런치메뉴", "점심", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -127,7 +127,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k4
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("집밥", "점심", "냉파요리", "소세지야채볶음밥", "밥요리", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -137,7 +137,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k7
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("외식", "초밥정식", "깨비시장맛집", "점심", "가성비맛집", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -147,7 +147,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k8
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("자이온버거", "집근처맛집", "저녁", "외식", "햄버거", "감튀는별로", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -157,7 +157,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k9
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
         dummyList.add(
@@ -167,7 +167,7 @@ class PostingsFragment : Fragment() {
                 ContextCompat.getDrawable(
                     activity,
                     R.drawable.k10
-                )!!, arrayListOf("tag1", "tag2", "tag3")
+                )!!, arrayListOf("이케맨", "저녁", "외식", "비싼저녁", "전복내장파스타", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이", "우니", "청하", "점심", "친구네", "브런치메뉴", "소세지", "계란후라이")
             )
         )
 

@@ -37,7 +37,7 @@ class PostingsViewModel : ViewModel() {
     }
 
     fun loadPostings() {
-        _postings.value = _dummyList.subList(0, 9)
+        _postings.value = _dummyList
     }
 
     fun updateDate(position: Int) {
