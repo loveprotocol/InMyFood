@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:icon="@drawable/ic_baseline_home_24" />
+
+    <item
+        android:id="@+id/feedFragment"
+        android:title="@string/feed"
+        android:icon="@drawable/ic_baseline_view_list_24" />
+
+    <item
+        android:id="@+id/postingAddFragment"
+        android:title="@string/add"
+        android:icon="@drawable/ic_baseline_add_to_photos_24" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:title="@string/search"
+        android:icon="@drawable/ic_baseline_search_24" />
+
+    <item
+        android:id="@+id/settingFragment"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_baseline_settings_24" />
+</menu>
