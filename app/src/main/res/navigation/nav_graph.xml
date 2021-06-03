@@ -16,23 +16,23 @@
         android:id="@+id/feedFragment"
         android:name="com.yes.inmyfood.ui.feed.FeedFragment"
         android:label="@string/feed"
-        tools:layout="@layout/feed_fragment" />
+        tools:layout="@layout/fragment_feed" />
 
     <fragment
         android:id="@+id/postingAddFragment"
         android:name="com.yes.inmyfood.ui.add.PostingAddFragment"
         android:label="@string/add"
-        tools:layout="@layout/posting_add_fragment" />
+        tools:layout="@layout/fragment_posting_add" />
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.yes.inmyfood.ui.search.SearchFragment"
         android:label="@string/search"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.yes.inmyfood.ui.setting.SettingFragment"
         android:label="@string/setting"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/fragment_setting" />
 </navigation>
