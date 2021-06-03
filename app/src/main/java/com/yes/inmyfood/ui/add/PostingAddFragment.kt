@@ -6,27 +6,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yes.inmyfood.R
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import com.yes.inmyfood.databinding.FragmentPostingAddBinding
 
 class PostingAddFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PostingAddFragment()
-    }
-
-    private lateinit var viewModel: PostingAddViewModel
+    private lateinit var binding: FragmentPostingAddBinding
+    private val viewModel by lazy { ViewModelProvider(this).get(PostingAddViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_posting_add, container, false)
+    ): View {
+        binding = FragmentPostingAddBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PostingAddViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        binding.fragPostingAddToolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
 }
